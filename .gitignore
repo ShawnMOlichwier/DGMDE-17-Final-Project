@@ -129,4 +129,8 @@ dmypy.json
 .pyre/
 
 # Local
+temp_folder/
 data/
+models/
+*.pth
+*.pt
