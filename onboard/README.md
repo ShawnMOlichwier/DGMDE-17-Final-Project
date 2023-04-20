@@ -38,4 +38,31 @@
    # it should print a Numpy array; otherwise Pi camera isn't properly setup
    ```
 
+# Usage
+
+Navigate to the ROS project root
+```shell
+cd ros_ws
+```
+
+Compile the ROS workspace
+```shell
+colcon build
+source install/local_setup.bash
+```
+
+Run the camera node
+```shell
+ros2 run camera camera
+```
+
+In another shell, run the inference node
+```shell
+ros2 run inference inference
+```
+
+In another shell, run the ros2 bag recorder
+```shell
+ros2 bag record --all
+```
 
