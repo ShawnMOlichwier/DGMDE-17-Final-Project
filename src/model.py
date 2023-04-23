@@ -1,21 +1,30 @@
-""" DeepLabv3 Model download and change the head for your prediction"""
-from torchvision.models.segmentation.deeplabv3 import DeepLabHead
-from torchvision import models
+# -------------------------------------------------------------------------------
+# model.py
+# -------------------------------------------------------------------------------
+#
+# Author: David Maiolo
+# Date: 03/30/2023
+#
+# This file contains the implementation of the machine learning model for the
+# Mars Terrain Analysis project. It includes functions to create, compile,
+# train, and evaluate the model.
 
+import tensorflow as tf
 
-def createDeepLabv3(outputchannels=1):
-    """DeepLabv3 class with custom head
+def create_model(input_shape):
+    model = tf.keras.Sequential([
+        tf.keras.layers.InputLayer(input_shape=input_shape),
+        tf.keras.layers.Conv2D(32, kernel_size=(3, 3), activation='relu', padding='same'),
+        tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+        tf.keras.layers.Conv2D(64, kernel_size=(3, 3), activation='relu', padding='same'),
+        tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+        tf.keras.layers.Conv2DTranspose(64, kernel_size=(3, 3), activation='relu', padding='same'),
+        tf.keras.layers.UpSampling2D(size=(2, 2)),
+        tf.keras.layers.Conv2DTranspose(32, kernel_size=(3, 3), activation='relu', padding='same'),
+        tf.keras.layers.UpSampling2D(size=(2, 2)),
+        tf.keras.layers.Conv2D(1, kernel_size=(1, 1), activation='sigmoid', padding='same')
+    ])
 
-    Args:
-        outputchannels (int, optional): The number of output channels
-        in your dataset masks. Defaults to 1.
-
-    Returns:
-        model: Returns the DeepLabv3 model with the ResNet101 backbone.
-    """
-    model = models.segmentation.deeplabv3_resnet101(pretrained=True,
-                                                    progress=True)
-    model.classifier = DeepLabHead(2048, outputchannels)
-    # Set the model in training mode
-    model.train()
     return model
+
+
