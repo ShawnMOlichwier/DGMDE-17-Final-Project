@@ -1,5 +1,8 @@
 from setuptools import setup
 
+import os
+import glob
+
 package_name = 'inference'
 
 setup(
@@ -10,6 +13,7 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+#        (os.path.join('share/', package_name, 'models'), ["models/best_model.onnx"]),
     ],
     install_requires=['setuptools'],
     zip_safe=True,

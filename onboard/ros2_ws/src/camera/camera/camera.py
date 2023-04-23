@@ -11,7 +11,7 @@ class CameraPublisher(Node):
         topic_name= 'camera'
 
         self.publisher_ = self.create_publisher(Image, topic_name , 10)
-        self.timer = self.create_timer(0.1, self.publish_image)
+        self.timer = self.create_timer(5, self.publish_image)
 
         self.cap = cv2.VideoCapture(0)
         self.br = CvBridge()
@@ -20,7 +20,7 @@ class CameraPublisher(Node):
         ret, frame = self.cap.read()     
         if ret == True:
             self.publisher_.publish(self.br.cv2_to_imgmsg(frame))
-        self.get_logger().info('Publishing camera image')
+            self.get_logger().info('Publishing camera image')
 
 
 def main(args=None):
