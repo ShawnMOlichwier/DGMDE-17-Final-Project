@@ -38,6 +38,12 @@
    # it should print a Numpy array; otherwise Pi camera isn't properly setup
    ```
 
+6. Install onnxruntime
+   ```shell
+   sudo apt install python3-rosdep2
+   pip install onnxruntime
+   ```
+
 # Usage
 
 Navigate to the ROS project root
