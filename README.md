@@ -74,6 +74,7 @@ Pasadena, CA 91109, USA.
 
 Our group explored two methods of modeling. One using Tensorflow and one with Pytorch.
 
+Tensorflow - 
 The Tensorflow CNN model consists of the following layers:
 
 1. Input layer with the shape of (260, 260, 1)
@@ -89,6 +90,19 @@ The Tensorflow CNN model consists of the following layers:
 
 The model is trained using the Adam optimizer and binary_crossentropy as the loss function. The training is carried out 
 for 10 epochs with a batch size of 2.
+
+Pytorch - 
+The Pytorch methodology utilizes the Segmentation Models Pytorch package, which is a high level API wrapper for Pytorch. This allows for rapid model creation, training, and inference. In addition, this will allow us to directly compare different models for selecting best performance.
+
+The models below have been trained using this methodology:
+NOTE: They are all trained using the ResNet18 backbone as it offers good performance and was able to be trained on our home GPUs.
+
+This functionality is currently housed in notebooks/UNET_modeling.ipynb
+
+* FPN - Feature Pyramid Network
+
+* UNet - 
+
 
 ## Integrating the Model into Raspberry Pi / Car Kit
 
