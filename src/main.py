@@ -43,7 +43,7 @@ model.compile(optimizer=tf.keras.optimizers.Adam(),
 
 # Load data generators
 print("Loading data generators...")
-data_dir = "data"
+data_dir = "data/ai4mars-dataset-merged-0.1"
 images_dir = "msl/images/edr"
 masks_dir = "msl/labels/train"
 x_train, x_val, y_train, y_val = get_data_generators(data_dir, images_dir, masks_dir)
@@ -63,7 +63,7 @@ y_val = y_val.reshape(-1, IMAGE_WIDTH, IMAGE_HEIGHT, 1)
 
 # Train the model
 print("Training the model...")
-epochs = 10
+epochs = 20
 batch_size = 32
 history = model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, validation_data=(x_val, y_val))
 
@@ -72,7 +72,7 @@ print("Plotting the training history...")
 plot_training_history(history)
 
 # Select two random indices from the validation set
-num_samples = 2
+num_samples = 4
 selected_indices = np.random.choice(len(x_val), num_samples, replace=False)
 
 # Display the comparisons for the selected indices
