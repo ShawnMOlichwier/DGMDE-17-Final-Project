@@ -99,9 +99,7 @@ NOTE: They are all trained using the ResNet18 backbone as it offers good perform
 
 This functionality is currently housed in notebooks/UNET_modeling.ipynb
 
-* FPN - Feature Pyramid Network
-
-* UNet - 
+Please note that all trained models are contained within the project link and not in Github, as they are too large.
 
 
 ## Integrating the Model into Raspberry Pi / Car Kit
